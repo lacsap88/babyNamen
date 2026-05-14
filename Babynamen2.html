@@ -1,0 +1,314 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namensvorschläge für unser Mädchen</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.7), transparent 35%),
+        linear-gradient(135deg, #ffe4ef, #f8d8ff, #dff1ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+      color: #4b2c4f;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 40px 30px;
+      box-shadow:
+        0 20px 60px rgba(195, 111, 176, 0.20),
+        0 8px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .emoji {
+      font-size: 60px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #c85d9e;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 1.05rem;
+      color: #7b5a77;
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      font-weight: 700;
+      color: #b64d91;
+      font-size: 1.1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #6a4765;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #f2d4e7;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      transition: all 0.2s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #d875b1;
+      box-shadow: 0 0 0 4px rgba(216, 117, 177, 0.15);
+    }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f7b6d2, #dca8ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 6px 12px rgba(220, 168, 255, 0.35);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f47db5, #c87cff);
+      box-shadow: 0 12px 24px rgba(200, 124, 255, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(200, 124, 255, 0.4);
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #status {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      display: none;
+      font-weight: 600;
+      white-space: pre-line;
+    }
+
+    #status.success {
+      display: block;
+      background: #eafaf0;
+      color: #217a42;
+    }
+
+    #status.error {
+      display: block;
+      background: #fff0f3;
+      color: #b0004b;
+    }
+
+    #status.loading {
+      display: block;
+      background: #f5f1ff;
+      color: #6c4ab6;
+    }
+
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8a6f87;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      .emoji {
+        font-size: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="emoji">👶🎀</div>
+      <h1>Namensideen für unser Mädchen</h1>
+      <p class="subtitle">
+        Trage deine schönsten Vorschläge für unsere kleine Prinzessin ein.
+      </p>
+    </div>
+
+    <div class="input-group">
+      <label for="user">Dein Name</label>
+      <input type="text" id="user" placeholder="z. B. Oma Petra" />
+    </div>
+
+    <div class="section-title">Deine Vorschläge</div>
+
+    <div id="namesContainer"></div>
+
+    <button id="submitButton" onclick="submitNames()">
+      💖 Vorschläge absenden
+    </button>
+
+    <div id="status"></div>
+
+    <div class="footer">
+      Vielen Dank für eure liebevollen Ideen! ✨
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyWgfMAu4RxMzUg1xwbJE4pQDJFb3nCw2mqMVJ-xxCo7aiTRhIjth67sMVjZb1Uqszr/exec";
+
+    // Fünf Eingabefelder erzeugen
+    const namesContainer = document.getElementById("namesContainer");
+    for (let i = 1; i <= 5; i++) {
+      const row = document.createElement("div");
+      row.className = "name-row";
+      row.innerHTML = `
+        <div class="badge">${i}</div>
+        <input type="text" id="name${i}" placeholder="Namensvorschlag ${i}" />
+      `;
+      namesContainer.appendChild(row);
+    }
+
+    function setStatus(type, message) {
+      const status = document.getElementById("status");
+      status.className = type;
+      status.textContent = message;
+    }
+
+    async function submitNames() {
+      const button = document.getElementById("submitButton");
+      const user = document.getElementById("user").value.trim();
+
+      if (!user) {
+        setStatus("error", "Bitte gib deinen Namen ein.");
+        return;
+      }
+
+      const names = [];
+      for (let i = 1; i <= 5; i++) {
+        const value = document.getElementById(`name${i}`).value.trim();
+        if (value) names.push(value);
+      }
+
+      if (names.length === 0) {
+        setStatus("error", "Bitte gib mindestens einen Namensvorschlag ein.");
+        return;
+      }
+
+      button.disabled = true;
+      setStatus("loading", "Speichere Vorschläge...");
+
+      let success = 0;
+      let failed = 0;
+
+      for (const name of names) {
+        const url = `${SCRIPT_URL}?name=${encodeURIComponent(name)}&user=${encodeURIComponent(user)}`;
+
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            success++;
+          } else {
+            failed++;
+          }
+        } catch (error) {
+          failed++;
+        }
+      }
+
+      button.disabled = false;
+
+      if (failed === 0) {
+        setStatus(
+          "success",
+          `💖 Vielen Dank! ${success} Vorschlag${success > 1 ? "e" : ""} wurden gespeichert.`
+        );
+
+        // Felder leeren (Name behalten)
+        for (let i = 1; i <= 5; i++) {
+          document.getElementById(`name${i}`).value = "";
+        }
+      } else {
+        setStatus(
+          "error",
+          `${success} erfolgreich gespeichert, ${failed} fehlgeschlagen.`
+        );
+      }
+    }
+  </script>
+</body>
+</html>
+```
++
